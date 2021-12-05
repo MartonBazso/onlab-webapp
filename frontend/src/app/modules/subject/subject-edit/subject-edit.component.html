@@ -1,0 +1,11 @@
+<div>
+    <!--reactive mat form for subject-->
+    <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="Subject Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Subject Description" formControlName="description">
+        </mat-form-field>
+    </form>
+</div>

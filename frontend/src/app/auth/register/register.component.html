@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Regisztráció
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="register()">
+                        <div class="form-group">
+                            <label for="name">Név</label>
+                            <input type="text" id="name" class="form-control" formControlName="name">
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                                <div *ngIf="name.errors['required']">
+                                    A név kötelező!
+                                </div>
+                                <div *ngIf="name.errors['minlength']">
+                                    Minimum 5 karakter hosszú kell legyen!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="userRole">Szerepkör</label>
+                            <mat-select id="userRole" class="form-control" formControlName="userRole">
+                                <mat-option [value]="roles['LeadManager']">Menedzser</mat-option>
+                                <mat-option [value]="roles['ProdManager']">Gyártásvezető</mat-option>
+                                <mat-option [value]="roles['Supplier']">Beszállító</mat-option>
+                            </mat-select>
+                            <div *ngIf="userRole.invalid && (userRole.dirty || userRole.touched)" class="alert alert-danger">
+                                <div *ngIf="userRole.errors['required']">
+                                    Szerepet választani kötelező!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" formControlName="email">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                <div *ngIf="email.errors['required']">
+                                    Az email cím kötelező
+                                </div>
+                                <div *ngIf="email.errors['email']">
+                                    Az email megfelelő email cím kell legyen!
+                                </div>
+                            </div>
+                        </div>
+                        <div formGroupName="passwords">
+                            <div class="form-group">
+                                <label for="password">Jelszó</label>
+                                <input type="password" id="password" class="form-control" formControlName="password">
+                                <div *ngIf="passwords.invalid && (passwords.dirty || passwords.touched)">
+                                    <div *ngIf="passwords.errors['passwordEmpty']" class="alert alert-danger">
+                                        A jelszó kötelező!
+                                    </div>
+                                    <div *ngIf="passwords.errors['passwordTooShort']" class="alert alert-danger">
+                                        Minimum 8 karakter hosszú kell legyen!
+                                    </div>
+                                    <div *ngIf="passwords.errors['passwordNotMatch']" class="alert alert-danger">
+                                        A két jelszó nem egyezik meg!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Jelszó megerősítése</label>
+                                <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword">
+                                <div *ngIf="passwords.invalid && (passwords.dirty || passwords.touched)">
+                                    <div *ngIf="passwords.errors['confirmPasswordEmpty']" class="alert alert-danger">
+                                        A jelszó kötelező!
+                                    </div>
+                                    <div *ngIf="passwords.errors['confirmPasswordEmpty']" class="alert alert-danger">
+                                        Minimum 8 karakter hosszú kell legyen!
+                                    </div>
+                                    <div *ngIf="passwords.errors['confirmPasswordEmpty']" class="alert alert-danger">
+                                        A két jelszó nem egyezik meg!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!this.form.valid">
+                            Regisztráció
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

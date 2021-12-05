@@ -1,0 +1,16 @@
+<div class="modal fade" id="delete-dialog" tabindex="-1" role="dialog" aria-labelledby="delete-dialog-label"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="delete-dialog-label">Delete</h1>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer">
+                <button mat-raised-button type="button" mat-dialog-close data-dismiss="modal">Cancel</button>
+                <button mat-raised-button color="warn" type="button" class="btn btn-danger" [mat-dialog-close]="true">Delete</button>
+            </div>
+        </div>
+    </div>
