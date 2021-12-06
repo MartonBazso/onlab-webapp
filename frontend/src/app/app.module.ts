@@ -25,9 +25,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     SubjectModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+
   ],
-  providers: [],
+  providers: [
+    {provide: 'BASE_URL', useValue: 'http://localhost:44396'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

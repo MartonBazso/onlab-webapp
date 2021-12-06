@@ -19,7 +19,7 @@ const ELEMENT_DATA: any[] = [
   { id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
   { id: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
   { id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { id: 4, name: 'Berylliumddddddddd', weight: 9.0122, symbol: 'Be' },
   { id: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
   { id: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
   { id: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
@@ -33,9 +33,7 @@ const ELEMENT_DATA: any[] = [
   styleUrls: ['./subject-list.component.scss']
 })
 export class SubjectListComponent implements OnInit {
-  //public dataSource = []; //: MatTableDataSource<any> = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['actions', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  subjects = ELEMENT_DATA;
   constructor(public dialog: MatDialog,
     private subjectService: SubjectService,
     private router: Router,

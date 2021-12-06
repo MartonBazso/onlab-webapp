@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
   }
 
   //route to subjects on click
-  onClick(path: string) {
+  navigateTo(path: string) {
     this.router.navigate([path]);
   }
 }

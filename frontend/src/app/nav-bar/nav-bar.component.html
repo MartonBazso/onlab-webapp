@@ -1,3 +1,11 @@
-<button mat-raised-button (click)="onClick('subject')" >Test1</button>
-<button mat-raised-button>Test2</button>
-<button mat-raised-button>Test3</button>
+<div class="main-nav">
+    <button mat-raised-button (click)="navigateTo('schools')">Iskolák</button>
+    <button mat-raised-button (click)="navigateTo('majors')">Szakok</button>
+    <button mat-raised-button (click)="navigateTo('subjects')">Tantárgyak</button>
+    <button mat-raised-button (click)="navigateTo('teachers')">Tanárok</button>
+</div>
+<div class="auth">
+    <button mat-raised-button (click)="navigateTo('login')">Bejelentkezés</button>
+    <button mat-raised-button (click)="navigateTo('logout')">Kijelentkezés</button>
+    <button mat-raised-button (click)="navigateTo('register')">Regisztráció</button>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row"></div>
+    <h3 class="card-title text-center">Sign In</h3>
+    <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-label-group">
+            <mat-form-field>
+                <input matInput type="text" id="inputName" class="form-control" placeholder="Name" formControlName="name" required autofocus>
+            </mat-form-field>
+        </div>
+
+        <div class="form-label-group">
+            <mat-form-field>
+                <input matInput type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" required>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" [disabled]="form.invalid">Sign in</button>
+    </form>
+</div>

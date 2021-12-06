@@ -9,13 +9,13 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { Role } from "src/app/interfaces/user.interface";
-import { UserService } from "src/app/services/user.service";
+import { Role } from "../models/user.interface";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"],
+  styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({});

@@ -7,6 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatOptionModule } from '@angular/material/core';
 
 const modules = [
   MatButtonModule,
@@ -17,6 +22,11 @@ const modules = [
   MatTableModule,
   MatDialogModule,
   MatInputModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatOptionModule,
 ];
 
 @NgModule({

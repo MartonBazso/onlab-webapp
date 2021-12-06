@@ -1,5 +1,16 @@
-<!--angular entry component with navigation-->
 <div>
-  <app-nav-bar></app-nav-bar>
-  <router-outlet></router-outlet>
+
+    <mat-drawer-container class="container" autosize>
+        <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+            <app-nav-bar class="navbar"></app-nav-bar>
+        </mat-drawer>
+        <mat-toolbar>
+            <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+            <span>My App</span>
+        </mat-toolbar>
+        <div class="sidenav-content">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-drawer-container>
 </div>
