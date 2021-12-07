@@ -13,11 +13,11 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SubjectController : ControllerBase
+    public class SubjectsController : ControllerBase
     {
         private readonly ISubjectManager _subjectManager;
 
-        public SubjectController(ISubjectManager subjectManager)
+        public SubjectsController(ISubjectManager subjectManager)
         {
             _subjectManager = subjectManager;
         }
@@ -34,7 +34,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result = _subjectManager.Get<SubjectGetViewModel>(id);
+            var result = _subjectManager.Get<SubjectFullGetViewModel>(id);
             return Ok(result);
         }
 
@@ -50,7 +50,7 @@ namespace Backend.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] SubjectRequestModel request)
         {
-            _subjectManager.Update(request);
+            _subjectManager.Update(id, request);
             return NoContent();
         }
 

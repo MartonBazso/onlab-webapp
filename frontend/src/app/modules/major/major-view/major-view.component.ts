@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DeleteDialogComponent } from '../../shared/delete-dialog/delete-dialog.component';
 import { CrudService } from '../../shared/services/crud.service';
 
 @Component({
-  selector: 'app-subject-list',
-  templateUrl: './subject-list.component.html',
-  styleUrls: ['./subject-list.component.scss']
+  selector: 'app-major-view',
+  templateUrl: './major-view.component.html',
+  styleUrls: ['./major-view.component.scss']
 })
-export class SubjectListComponent implements OnInit {
-  subjects = [];
+export class MajorViewComponent implements OnInit {
+
+  majors = [];
   id: any;
-  selectedMajor: any;
+  selectedSchool: any;
+
   constructor(public dialog: MatDialog,
     private service: CrudService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
-    service.url = 'subjects';
+    service.url = 'majors';
   }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class SubjectListComponent implements OnInit {
     if (this.id) {
       this.service.url = "schools";
       this.service.get(this.id).subscribe(res => {
-        this.selectedMajor = res;
+        this.selectedSchool = res;
 
         this.service.url = "majors";
         this.service.list();
@@ -41,26 +43,26 @@ export class SubjectListComponent implements OnInit {
 
     this.service.entities.subscribe(res => {
       if (this.id) {
-        this.subjects = res.filter(x => x.schoolId == this.id);
+        this.majors = res.filter(x => x.schoolId == this.id);
         return;
       }
-      this.subjects = res;
+      this.majors = res;
     });
   }
 
-  deleteSubject(subject: any) {
+  deleteMajor(subject: any) {
     const dialogRef = this.dialog.open(DeleteDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.service.delete(subject.id).subscribe(res => {
-          console.log(res);
+          this.service.list();
         });
       }
     });
   }
 
-  editSubject(subject: any) {
+  editMajor(subject: any) {
     if (this.id) {
       this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute.parent });
       return;
@@ -68,7 +70,7 @@ export class SubjectListComponent implements OnInit {
     this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute });
   }
 
-  createSubject() {
+  createMajor() {
     if (this.id) {
       this.router.navigate(["create"], { relativeTo: this.activatedRoute.parent });
       return;
@@ -77,7 +79,6 @@ export class SubjectListComponent implements OnInit {
   }
 
   navigate(id: number) {
-    console.log(id);
-    //this.router.navigate(["subjects", id]);
+    this.router.navigate(["subjects", id]);
   }
 }

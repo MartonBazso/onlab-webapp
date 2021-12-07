@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.BusinessLogic.Managers
 {
-    public abstract class ManagerBase<TModel> : IManagerBase<TModel> where TModel : DbModelBase
+    public class ManagerBase<TModel> : IManagerBase<TModel> where TModel : DbModelBase
     {
         private readonly IRepositoryBase<TModel> _repositoryBase;
         private readonly IMapper _mapper;
@@ -21,8 +21,8 @@ namespace Backend.BusinessLogic.Managers
 
         public virtual TResponse Get<TResponse>(int id)
         {
-            var subject = _repositoryBase.List().Where(s => s.Id == id).Single();
-            return _mapper.Map<TResponse>(subject);
+            var entry = _repositoryBase.List().Where(s => s.Id == id).Single();
+            return _mapper.Map<TResponse>(entry);
         }
 
         public virtual void Create<TRequest>(TRequest requestModel)
@@ -31,10 +31,11 @@ namespace Backend.BusinessLogic.Managers
             _repositoryBase.Create(model);
         }
 
-        public virtual void Update<TRequest>(TRequest requestModel)
+        public virtual void Update<TRequest>(int id, TRequest requestModel)
         {
-            var model = _mapper.Map<TModel>(requestModel);
-            _repositoryBase.Update(model);
+            var entry = _repositoryBase.List().Where(s => s.Id == id).Single();
+            _mapper.Map(requestModel, entry);
+            _repositoryBase.Update(entry);
         }
 
         public virtual void Delete(int id)

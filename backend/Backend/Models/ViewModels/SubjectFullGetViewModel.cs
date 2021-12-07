@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Backend.BusinessLogic.Models.ViewModels
 {
-    public class SubjectGetViewModel
+    public class SubjectFullGetViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }

@@ -8,6 +8,6 @@ namespace Backend.BusinessLogic.Managers
         void Delete(int id);
         TResponse Get<TResponse>(int id);
         List<TResponse> List<TResponse>();
-        void Update<TRequest>(TRequest requestModel);
+        void Update<TRequest>(int id, TRequest requestModel);
     }
 }

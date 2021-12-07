@@ -1,6 +1,6 @@
 <div>
     <h1>
-        Új Tárgy Létrehozása
+        Új Iskola Létrehozása
     </h1>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field>
@@ -12,7 +12,10 @@
         <mat-form-field>
             <input matInput placeholder="Város" formControlName="city">
         </mat-form-field>
-        <!-- TODO Select for schools-->
+        <label collor="grey" for="slider">Hallgatók száma
+        </label>
+        <mat-slider id="slider" [max]="5000" [min]="200" [step]="100" [thumbLabel]="true" formControlName="numberOfStudents">
+        </mat-slider>
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid || inProgress">Submit</button>
     </form>
 </div>

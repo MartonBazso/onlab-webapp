@@ -16,6 +16,7 @@ namespace Backend.Config
             services.AddScoped<ISubjectManager, SubjectManager>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped(typeof(IManagerBase<>), typeof(ManagerBase<>));
             services.AddSingleton<ICurrentUser, CurrentUser.CurrentUser>();
         }
     }

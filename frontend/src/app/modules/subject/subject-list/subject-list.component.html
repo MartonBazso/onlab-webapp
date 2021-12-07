@@ -1,13 +1,21 @@
 <div>
+    <div class="school-data" *ngIf="selectedMajor">
+        <h1>{{selectedMajor.name}}</h1>
+        <h2>{{selectedMajor.description}}</h2>
+    </div>
     <div class="cards">
         <button mat-button class="add-button">
 
-          <mat-card class="card add-card" (click)="editSubject(null)">
+          <mat-card class="card add-card" (click)="createSubject()">
             <mat-card-content><img src="assets/transparent-plus.png" alt="plus"></mat-card-content>
           </mat-card>
         </button>
         <mat-card *ngFor="let subject of subjects" class="card">
-            <mat-card-title>{{subject.name}}</mat-card-title>
+            <mat-card-title>
+                <button mat-flat-button (click)="navigate(subject.id)" class="name-button">
+                  {{subject.name}}
+                </button>
+            </mat-card-title>
             <mat-card-content>
                 <p>{{subject.description}}</p>
             </mat-card-content>

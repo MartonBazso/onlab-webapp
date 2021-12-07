@@ -36,7 +36,7 @@ namespace Backend.DataAccess.Repositories
         public void Update(T model)
         {
             _context.Set<T>().Attach(model);
-            _context.Set<T>().Update(model).Property(p => p.Id).IsModified = true;
+            _context.Set<T>().Update(model);
             _context.SaveChanges();
         }
     }

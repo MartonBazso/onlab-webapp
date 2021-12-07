@@ -36,6 +36,12 @@ namespace Backend
 
             services.SetupDependencyInjection();
             services.SetupAutoMapper();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200","http://localhost:4200/")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
         }
 
@@ -48,7 +54,7 @@ namespace Backend
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend v1"));
             }
-
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CrudService } from '../../shared/services/crud.service';
-import { SubjectService } from '../services/subject.service';
 
 @Component({
-  selector: 'app-subject-edit',
-  templateUrl: './subject-edit.component.html',
-  styleUrls: ['./subject-edit.component.scss']
+  selector: 'app-major-edit',
+  templateUrl: './major-edit.component.html',
+  styleUrls: ['./major-edit.component.scss']
 })
-export class SubjectEditComponent implements OnInit {
+export class MajorEditComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   inProgress: boolean = false;
   private id: number | null = null;
@@ -18,7 +17,7 @@ export class SubjectEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private service: CrudService) {
-    service.url = 'subjects';
+    service.url = 'majors';
   }
 
   ngOnInit(): void {
@@ -45,15 +44,16 @@ export class SubjectEditComponent implements OnInit {
     if (this.id) {
       this.service.update(this.form.value).subscribe(() => {
         this.inProgress = false;
-        this.router.navigate(['/subjects']);
+        this.router.navigate(['/majors']);
       });
       return;
     }
 
     this.service.add(this.form.value).subscribe(() => {
       this.inProgress = false;
-      this.router.navigate(['/subjects']);
+      this.router.navigate(['/majors']);
     });
 
   }
+
 }

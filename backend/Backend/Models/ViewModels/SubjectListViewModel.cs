@@ -7,6 +7,7 @@ namespace Backend.BusinessLogic.Models.ViewModels
 {
     public class SubjectListViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }

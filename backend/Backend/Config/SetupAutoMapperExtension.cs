@@ -16,6 +16,8 @@ namespace Backend.Config
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<SubjectProfile>();
+                cfg.AddProfile<SchoolProfile>();
+                cfg.AddProfile<MajorProfile>();
                 cfg.AddProfile<UserProfile>();
             });
 

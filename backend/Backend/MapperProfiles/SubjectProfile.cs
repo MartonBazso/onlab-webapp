@@ -1,5 +1,8 @@
 ﻿
 using AutoMapper;
+using Backend.BusinessLogic.Models.RequestModels;
+using Backend.BusinessLogic.Models.ViewModels;
+using Backend.DataAccess.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +14,9 @@ namespace Backend.MapperProfiles
     {
         public SubjectProfile()
         {
-
-            //CreateMap<Part, PartDTO>().ReverseMap();
-            //CreateMap<ComplexPart, PartDTO>()
-            //    .ForMember(dst => dst.PartType, opt => opt.MapFrom(src => PartType.ComplexPart))
-            //    .ReverseMap();
+            CreateMap<Subject, SubjectListViewModel>().ReverseMap();
+            CreateMap<Subject, SubjectRequestModel>().ReverseMap();
+            CreateMap<Subject, SubjectFullGetViewModel>().ReverseMap();
         }
     }
 }
