@@ -1,7 +1,8 @@
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: stretch;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -9,10 +10,10 @@
     margin: 20px;
     padding: 100px;
     .name-button {
-        font-size: 2.3em;
+        font-size: 1.2em;
     }
     .card-content {
-        font-size: 1.5em;
+        font-size: 0.8em;
     }
 }
 
@@ -33,4 +34,25 @@ img {
     padding: 0px;
     border: 0;
     box-shadow: none;
+}
+
+.description {
+    width: 30em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tooltip {
+    background: #f8f8ff;
+    color: black;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    margin: 30px;
 }

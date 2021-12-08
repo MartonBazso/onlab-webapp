@@ -4,6 +4,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { MaterialModule } from 'src/app/material.module';
 import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SubjectGetComponent } from './subject-get/subject-get.component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     SubjectListComponent,
-    SubjectEditComponent
+    SubjectEditComponent,
+    SubjectGetComponent
   ],
   imports: [
     CommonModule,

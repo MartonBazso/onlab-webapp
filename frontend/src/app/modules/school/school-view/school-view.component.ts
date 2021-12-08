@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteDialogComponent } from '../../shared/delete-dialog/delete-dialog.component';
-import { CrudService } from '../../shared/services/crud.service';
 import { SchoolService } from '../services/school.service';
 
 @Component({
@@ -13,11 +12,9 @@ import { SchoolService } from '../services/school.service';
 export class SchoolViewComponent implements OnInit {
   schools = [];
   constructor(public dialog: MatDialog,
-    private service: CrudService,
+    private service: SchoolService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
-      service.url = 'schools';
-     }
+    private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.service.list();

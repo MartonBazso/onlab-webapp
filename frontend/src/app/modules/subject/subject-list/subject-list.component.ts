@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MajorService } from '../../major/services/major.service';
 import { DeleteDialogComponent } from '../../shared/delete-dialog/delete-dialog.component';
 import { CrudService } from '../../shared/services/crud.service';
+import { SubjectService } from '../services/subject.service';
 
 @Component({
   selector: 'app-subject-list',
@@ -11,37 +13,29 @@ import { CrudService } from '../../shared/services/crud.service';
 })
 export class SubjectListComponent implements OnInit {
   subjects = [];
-  id: any;
+  majorId: any;
   selectedMajor: any;
   constructor(public dialog: MatDialog,
-    private service: CrudService,
+    private service: SubjectService,
+    private majorService: MajorService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
-    service.url = 'subjects';
-  }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.id = params.id;
+      this.majorId = params.id;
     });
 
-    if (this.id) {
-      this.service.url = "schools";
-      this.service.get(this.id).subscribe(res => {
+    if (this.majorId) {
+      this.majorService.get(this.majorId).subscribe(res => {
+        if (!res) return;
         this.selectedMajor = res;
-
-        this.service.url = "majors";
-        this.service.list();
       });
-
-    } else {
-
-      this.service.list();
     }
-
+    this.service.list();
     this.service.entities.subscribe(res => {
-      if (this.id) {
-        this.subjects = res.filter(x => x.schoolId == this.id);
+      if (this.majorId) {
+        this.subjects = res.filter(x => x.majorId == this.majorId);
         return;
       }
       this.subjects = res;
@@ -61,23 +55,14 @@ export class SubjectListComponent implements OnInit {
   }
 
   editSubject(subject: any) {
-    if (this.id) {
-      this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute.parent });
-      return;
-    }
-    this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute });
+    this.router.navigate(["subjects", "edit", subject.id]);
   }
 
   createSubject() {
-    if (this.id) {
-      this.router.navigate(["create"], { relativeTo: this.activatedRoute.parent });
-      return;
-    }
-    this.router.navigate(["create"], { relativeTo: this.activatedRoute });
+    this.router.navigate(["subjects", "create"]);
   }
 
   navigate(id: number) {
-    console.log(id);
-    //this.router.navigate(["subjects", id]);
+    this.router.navigate(["subjects", "details", id]);
   }
 }

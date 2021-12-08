@@ -1,5 +1,6 @@
 ﻿using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
+using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -60,6 +61,13 @@ namespace Backend.Controllers
         {
             _manager.Delete(id);
             return NoContent();
+        }
+
+        [HttpGet("idNameModels")]
+        public IActionResult GetIdNameModels()
+        {
+            var result = _manager.List<IdNameModel>();
+            return Ok(result);
         }
     }
 }

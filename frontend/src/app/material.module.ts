@@ -12,7 +12,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatOptionModule } from '@angular/material/core';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const modules = [
   MatButtonModule,
@@ -29,6 +31,9 @@ const modules = [
   MatDatepickerModule,
   MatOptionModule,
   MatSliderModule,
+  MatTooltipModule,
+  MatCheckboxModule,
+
 ];
 
 @NgModule({

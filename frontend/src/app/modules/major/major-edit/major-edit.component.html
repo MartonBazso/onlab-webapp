@@ -4,15 +4,38 @@
     </h1>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input matInput placeholder="Iskola Neve" formControlName="name">
+            <input matInput placeholder="Szak Neve" formControlName="name">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Leírás" formControlName="description">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Város" formControlName="city">
+            <mat-select placeholder="Kategória" formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{category.name}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-        <!-- TODO Select for schools-->
+        <mat-form-field>
+            <mat-select placeholder="Iskola" formControlName="schoolId">
+                <mat-option *ngFor="let school of schools" [value]="school.id">
+                    {{school.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <label collor="grey" for="slider">Munkapiaci elhelyezkedés esélye
+        </label>
+        <mat-slider id="slider" [max]="100" [min]="0" [step]="10" [thumbLabel]="true" formControlName="workChances">
+        </mat-slider>
+        <label collor="grey" for="slider">Hallgatók száma átlagosan
+        </label>
+        <mat-slider id="slider" [max]="5000" [min]="200" [step]="100" [thumbLabel]="true" formControlName="averageNumberOfStudents">
+        </mat-slider>
+        <label collor="grey" for="slider">Félévek száma
+        </label>
+        <mat-slider id="slider" [max]="14" [min]="2" [step]="1" [thumbLabel]="true" formControlName="numberOfSemesters">
+        </mat-slider>
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid || inProgress">Submit</button>
     </form>
 </div>

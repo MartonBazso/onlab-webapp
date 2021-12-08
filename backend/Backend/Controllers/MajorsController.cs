@@ -1,5 +1,6 @@
 ﻿using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
+using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +13,17 @@ namespace Backend.Controllers
     [ApiController]
     public class MajorsController : ControllerBase
     {
-        private readonly IManagerBase<Major> _managerBase;
+        private readonly IManagerBase<Major> _manager;
 
         public MajorsController(IManagerBase<Major> managerBase)
         {
-            _managerBase = managerBase;
+            _manager = managerBase;
         }
         // GET: api/<MajorsController>
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _managerBase.List<MajorListViewModel>();
+            var result = _manager.List<MajorListViewModel>();
             return Ok(result);
         }
 
@@ -30,7 +31,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result = _managerBase.Get<MajorFullGetViewModel>(id);
+            var result = _manager.Get<MajorFullGetViewModel>(id);
             return Ok(result);
         }
 
@@ -38,7 +39,7 @@ namespace Backend.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] MajorRequestModel request)
         {
-            _managerBase.Create(request);
+            _manager.Create(request);
             return Ok();
         }
 
@@ -46,7 +47,7 @@ namespace Backend.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] MajorRequestModel request)
         {
-            _managerBase.Update(id, request);
+            _manager.Update(id, request);
             return Ok();
         }
 
@@ -54,8 +55,15 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _managerBase.Delete(id);
+            _manager.Delete(id);
             return Ok();
+        }
+
+        [HttpGet("idNameModels")]
+        public IActionResult GetIdNameModels()
+        {
+            var result = _manager.List<IdNameModel>();
+            return Ok(result);
         }
     }
 }

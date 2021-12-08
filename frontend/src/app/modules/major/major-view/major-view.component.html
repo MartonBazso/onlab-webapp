@@ -1,4 +1,5 @@
 <div>
+    <h1>Szakok</h1>
     <div class="school-data" *ngIf="selectedSchool">
         <h1>{{selectedSchool.name}}</h1>
         <h2>{{selectedSchool.description}}</h2>
@@ -17,11 +18,13 @@
                 </button>
             </mat-card-title>
             <mat-card-content>
-                <p>{{major.description}}</p>
+                <div class="description" [matTooltip]="major.description" matTooltipClass="tooltip">
+                    {{major.description}} <span *ngIf="major.description.length > 50">...</span>
+                </div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="editMajor(major)" class="edit-button">Edit</button>
-                <button mat-raised-button color="warn" (click)="deleteMajor(major)" class="delete-button">Delete</button>
+                <button mat-raised-button color="primary" (click)="editMajor(major)" class="edit-button">Szerkesztés</button>
+                <button mat-raised-button color="warn" (click)="deleteMajor(major)" class="delete-button">Törlés</button>
             </mat-card-actions>
         </mat-card>
     </div>

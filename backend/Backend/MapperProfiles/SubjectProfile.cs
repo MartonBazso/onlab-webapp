@@ -3,6 +3,7 @@ using AutoMapper;
 using Backend.BusinessLogic.Models.RequestModels;
 using Backend.BusinessLogic.Models.ViewModels;
 using Backend.DataAccess.DataModels;
+using Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Backend.MapperProfiles
             CreateMap<Subject, SubjectListViewModel>().ReverseMap();
             CreateMap<Subject, SubjectRequestModel>().ReverseMap();
             CreateMap<Subject, SubjectFullGetViewModel>().ReverseMap();
+            CreateMap<Subject, IdNameModel>().ReverseMap();
         }
     }
 }

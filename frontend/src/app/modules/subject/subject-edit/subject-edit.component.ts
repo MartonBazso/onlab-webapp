@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MajorService } from '../../major/services/major.service';
 import { CrudService } from '../../shared/services/crud.service';
 import { SubjectService } from '../services/subject.service';
 
@@ -13,13 +14,13 @@ export class SubjectEditComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   inProgress: boolean = false;
   private id: number | null = null;
+  majors: any[];
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private service: CrudService) {
-    service.url = 'subjects';
-  }
+    private service: SubjectService,
+    private majorService: MajorService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -28,8 +29,11 @@ export class SubjectEditComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      city: ['', Validators.required],
-      numberOfStudents: [1000],
+      difficulty: ['', Validators.required],
+      rating: ['', Validators.required],
+      semester: ['', Validators.required],
+      isMandatory: [false, Validators.required],
+      majorId: ['', Validators.required],
     });
 
     if (this.id) {
@@ -38,6 +42,10 @@ export class SubjectEditComponent implements OnInit {
         this.form.patchValue(data);
       });
     }
+
+    this.majorService.getMajorIdNameModels().subscribe(res => {
+      this.majors = res;
+    });
   }
 
   onSubmit() {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Backend.DataAccess.DataModels;
+using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
 using System;
@@ -14,8 +15,10 @@ namespace Backend.MapperProfiles
         public MajorProfile()
         {
             CreateMap<Major, MajorFullGetViewModel>().ReverseMap();
+
             CreateMap<Major, MajorListViewModel>().ReverseMap();
             CreateMap<Major, MajorRequestModel>().ReverseMap();
+            CreateMap<Major, IdNameModel>().ReverseMap();
         }
     }
 }

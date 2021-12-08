@@ -5,12 +5,27 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field>
             <input matInput placeholder="Iskola Neve" formControlName="name">
+            <mat-error>
+                <span *ngIf="form.get('name').hasError('required')">
+                    Iskola neve kötelező!
+                </span>
+            </mat-error>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Leírás" formControlName="description">
+            <mat-error>
+                <span *ngIf="form.get('description').hasError('required')">
+                    Leírás kötelező!
+                </span>
+            </mat-error>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Város" formControlName="city">
+            <mat-error>
+                <span *ngIf="form.get('city').hasError('required')">
+                    Város kötelező!
+                </span>
+            </mat-error>
         </mat-form-field>
         <label collor="grey" for="slider">Hallgatók száma
         </label>

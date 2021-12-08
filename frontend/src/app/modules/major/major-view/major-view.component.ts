@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SchoolService } from '../../school/services/school.service';
 import { DeleteDialogComponent } from '../../shared/delete-dialog/delete-dialog.component';
 import { CrudService } from '../../shared/services/crud.service';
+import { MajorService } from '../services/major.service';
 
 @Component({
   selector: 'app-major-view',
@@ -12,38 +14,31 @@ import { CrudService } from '../../shared/services/crud.service';
 export class MajorViewComponent implements OnInit {
 
   majors = [];
-  id: any;
+  schoolId: any;
   selectedSchool: any;
 
   constructor(public dialog: MatDialog,
-    private service: CrudService,
+    private service: MajorService,
+    private schoolService: SchoolService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
-    service.url = 'majors';
-  }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.id = params.id;
+      this.schoolId = params.id;
     });
 
-    if (this.id) {
-      this.service.url = "schools";
-      this.service.get(this.id).subscribe(res => {
+    if (this.schoolId) {
+      this.schoolService.get(this.schoolId).subscribe(res => {
+        if(!res) return;
         this.selectedSchool = res;
-
-        this.service.url = "majors";
-        this.service.list();
       });
-
-    } else {
-
-      this.service.list();
     }
+    this.service.list();
 
     this.service.entities.subscribe(res => {
-      if (this.id) {
-        this.majors = res.filter(x => x.schoolId == this.id);
+      if (this.schoolId) {
+        this.majors = res.filter(x => x.schoolId == this.schoolId);
         return;
       }
       this.majors = res;
@@ -63,7 +58,7 @@ export class MajorViewComponent implements OnInit {
   }
 
   editMajor(subject: any) {
-    if (this.id) {
+    if (this.schoolId) {
       this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute.parent });
       return;
     }
@@ -71,7 +66,7 @@ export class MajorViewComponent implements OnInit {
   }
 
   createMajor() {
-    if (this.id) {
+    if (this.schoolId) {
       this.router.navigate(["create"], { relativeTo: this.activatedRoute.parent });
       return;
     }

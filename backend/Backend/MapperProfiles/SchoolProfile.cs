@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Backend.DataAccess.DataModels;
+using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
 using System;
@@ -16,6 +17,7 @@ namespace Backend.MapperProfiles
             CreateMap<School, SchoolListViewModel>().ReverseMap();
             CreateMap<School, SchoolRequestModel>().ReverseMap();
             CreateMap<School, SchoolFullGetViewModel>().ReverseMap();
+            CreateMap<School, IdNameModel>().ReverseMap();
         }
     }
 }

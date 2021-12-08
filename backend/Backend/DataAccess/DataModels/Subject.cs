@@ -8,6 +8,7 @@ namespace Backend.DataAccess.DataModels
     public class Subject : DbModelBase
     {
         public string Name { get; set; }
+        public string Description { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }
         public int Semester { get; set; }

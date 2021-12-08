@@ -6,13 +6,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CrudService {
-  _url: string = '';
   entities: BehaviorSubject<any[]>;
-  set url(url: string) {
-    this._url = url;
-  }
 
-  constructor(private httpClient: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(protected httpClient: HttpClient, @Inject('BASE_URL') protected baseUrl: string, protected _url: string) {
     this.entities = new BehaviorSubject<any[]>([]);
    }
 

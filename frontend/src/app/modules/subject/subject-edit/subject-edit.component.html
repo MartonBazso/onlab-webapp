@@ -4,15 +4,29 @@
     </h1>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input matInput placeholder="Iskola Neve" formControlName="name">
+            <input matInput placeholder="Tárgy Neve" formControlName="name">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Leírás" formControlName="description">
         </mat-form-field>
+
+        <label collor="grey" for="slider">Nehézség</label>
+        <mat-slider id="slider" [max]="100" [min]="0" [step]="10" [thumbLabel]="true" formControlName="difficulty">
+        </mat-slider>
+        <label collor="grey" for="slider">Értékelés</label>
+        <mat-slider id="slider" [max]="5" [min]="0" [step]="1" [thumbLabel]="true" formControlName="rating">
+        </mat-slider>
+        <label collor="grey" for="slider">Félév</label>
+        <mat-slider id="slider" [max]="14" [min]="1" [step]="1" [thumbLabel]="true" formControlName="semester">
+        </mat-slider>
+        <mat-checkbox formControlName="isMandatory">Kötelező</mat-checkbox>
         <mat-form-field>
-            <input matInput placeholder="Város" formControlName="city">
+            <mat-select placeholder="Szak" formControlName="majorId">
+                <mat-option *ngFor="let major of majors" [value]="major.id">
+                    {{major.name}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-        <!-- TODO Select for schools-->
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid || inProgress">Submit</button>
     </form>
 </div>

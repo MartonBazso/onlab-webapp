@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SchoolService } from '../../school/services/school.service';
-import { CrudService } from '../../shared/services/crud.service';
 
 @Component({
   selector: 'app-school-edit',
@@ -17,9 +16,7 @@ export class SchoolEditComponent implements OnInit {
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private service: CrudService) {
-    service.url = 'schools';
-  }
+    private service: SchoolService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -56,5 +53,4 @@ export class SchoolEditComponent implements OnInit {
     });
 
   }
-
 }

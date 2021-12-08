@@ -7,6 +7,7 @@ import { SchoolViewComponent } from './modules/school/school-view/school-view.co
 import { LoginComponent } from './modules/shared/login/login.component';
 import { RegisterComponent } from './modules/shared/register/register.component';
 import { SubjectEditComponent } from './modules/subject/subject-edit/subject-edit.component';
+import { SubjectGetComponent } from './modules/subject/subject-get/subject-get.component';
 import { SubjectListComponent } from './modules/subject/subject-list/subject-list.component';
 import { TeacherViewComponent } from './modules/teacher/teacher-view/teacher-view.component';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'edit/:id', component: SubjectEditComponent },
       { path: 'create', component: SubjectEditComponent },
       { path: ':id', component: SubjectListComponent },
+      { path: 'details/:id', component: SubjectGetComponent },
     ]
   },
 
