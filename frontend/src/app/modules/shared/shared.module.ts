@@ -9,6 +9,7 @@ import { AddButtonComponent } from './add-button/add-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { DisplayCardComponent } from './display-card/display-card.component';
+import { EmptyListIndicatorComponent } from './empty-list-indicator/empty-list-indicator.component';
 
 
 
@@ -22,12 +23,14 @@ import { DisplayCardComponent } from './display-card/display-card.component';
     EditButtonComponent,
     DeleteButtonComponent,
     DisplayCardComponent,
+    EmptyListIndicatorComponent,
   ],
   exports:[
     DeleteButtonComponent,
     EditButtonComponent,
     AddButtonComponent,
     DisplayCardComponent,
+    EmptyListIndicatorComponent,
   ],
   imports: [
     CommonModule,

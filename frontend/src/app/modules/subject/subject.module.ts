@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubjectGetComponent } from './subject-get/subject-get.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,6 +18,7 @@ import { SubjectGetComponent } from './subject-get/subject-get.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     MaterialModule,
     ReactiveFormsModule,
   ]

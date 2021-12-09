@@ -1,12 +1,16 @@
 <div>
     <h1>Szakok</h1>
     <div class="school-data" *ngIf="selectedSchool">
-        <h1>{{selectedSchool.name}}</h1>
-        <h2>{{selectedSchool.description}}</h2>
+        <h2>{{selectedSchool.name}} ({{selectedSchool.city}})</h2>
+        <h2>Leírás:</h2>
+        <p>{{selectedSchool.description}}</p>
+        <p>Hallgatók száma: {{selectedSchool.numberOfStudents}}</p>
     </div>
     <div class="cards">
         <app-add-button route="majors"></app-add-button>
         <app-display-card [entity]="major" [service]="service" *ngFor="let major of majors" route="majors" childRoute="subjects">
         </app-display-card>
     </div>
+
+    <app-empty-list-indicator [list]="majors"></app-empty-list-indicator>
 </div>

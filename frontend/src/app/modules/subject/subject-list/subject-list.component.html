@@ -1,8 +1,13 @@
 <div>
     <h1>Tárgyak</h1>
-    <div class="school-data" *ngIf="selectedMajor">
-        <h1>{{selectedMajor.name}}</h1>
-        <h2>{{selectedMajor.description}}</h2>
+
+    <div class="major-data" *ngIf="selectedMajor">
+        <h2>{{selectedMajor.name}} ({{categoryName}})</h2>
+        <h3>Félévek száma: {{selectedMajor.numberOfSemesters}}</h3>
+        <h2>Leírás:</h2>
+        <p>{{selectedMajor.description}}</p>
+        <p><em>Hallgatók száma:</em> {{selectedMajor.averageNumberOfStudents}} fő</p>
+        <p><em>Elhelyezkedés eléye:</em> {{selectedMajor.workChances}}%</p>
     </div>
 
     <div class="cards">
@@ -10,4 +15,6 @@
         <app-display-card [entity]="subject" [service]="service" *ngFor="let subject of subjects" route="subjects" childRoute="subjects/details">
         </app-display-card>
     </div>
+
+    <app-empty-list-indicator [list]="subjects"></app-empty-list-indicator>
 </div>

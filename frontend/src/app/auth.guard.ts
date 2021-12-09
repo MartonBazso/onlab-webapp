@@ -18,7 +18,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return !(this.user === null || this.user.role !== Role.Admin);
+    const roles = route.data.roles as Role[]
+    return !(this.user === null || roles.includes(this.user.role));
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MajorService } from '../../major/services/major.service';
+import { IdNameModel } from '../../shared/models/id-name.interface';
+import { EnumService } from '../../shared/services/enum.service';
 import { SubjectService } from '../services/subject.service';
 
 @Component({
@@ -13,11 +15,14 @@ export class SubjectListComponent implements OnInit {
   subjects = [];
   majorId: any;
   selectedMajor: any;
+  categories: IdNameModel[];
   constructor(public dialog: MatDialog,
     private service: SubjectService,
     private majorService: MajorService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private enumService: EnumService,
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -30,6 +35,10 @@ export class SubjectListComponent implements OnInit {
         this.selectedMajor = res;
       });
     }
+    this.enumService.categories.subscribe(res => {
+      this.categories = res;
+    });
+
     this.service.list();
     this.service.entities.subscribe(res => {
       if (this.majorId) {
@@ -38,5 +47,10 @@ export class SubjectListComponent implements OnInit {
       }
       this.subjects = res;
     });
+  }
+
+  get categoryName() {
+    if (!this.selectedMajor) return "";
+    return this.categories.find(x => x.id == this.selectedMajor.category).name;
   }
 }
