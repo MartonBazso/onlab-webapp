@@ -1,7 +1,6 @@
 <div class="container">
-    <div class="row"></div>
-    <h3 class="card-title text-center">Bejelentkezés</h3>
     <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h3 class="card-title text-center">Bejelentkezés</h3>
         <mat-form-field>
             <input matInput type="text" id="inputName" class="form-control" placeholder="Email" formControlName="email" required autofocus>
         </mat-form-field>

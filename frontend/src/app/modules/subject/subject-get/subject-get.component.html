@@ -1,1 +1,21 @@
-<p>subject-get works!</p>
+<div class="subject-data" *ngIf="subject">
+    <h2>{{subject.name}} </h2>
+    <h2>Leírás:</h2>
+    <p>{{subject.description}}</p>
+</div>
+<div>
+    <ul>
+        <li>
+            Comment
+        </li>
+        <li>
+            FileUpload
+        </li>
+        <li>
+            FileDownload
+        </li>
+        <li>
+            Teacher review
+        </li>
+    </ul>
+</div>

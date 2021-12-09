@@ -1,8 +1,8 @@
 <div class="container">
-    <h3 class="card-title">
-        Regisztráció
-    </h3>
     <form [formGroup]="form" (ngSubmit)="register()">
+        <h3 class="card-title">
+            Regisztráció
+        </h3>
         <div class="form-group">
             <mat-form-field>
                 <input matInput type="text" id="userName" class="form-control" placeholder="Felhasználónév" formControlName="userName">

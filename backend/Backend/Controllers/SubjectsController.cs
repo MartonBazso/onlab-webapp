@@ -1,4 +1,6 @@
-﻿using Backend.BusinessLogic.Managers;
+﻿using Backend.Authorization;
+using Backend.BusinessLogic.Enums;
+using Backend.BusinessLogic.Managers;
 using Backend.BusinessLogic.Models.RequestModels;
 using Backend.BusinessLogic.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +42,7 @@ namespace Backend.Controllers
 
         // POST api/<SubjectController>
         [HttpPost]
+        [Authorize(Role.Admin)]
         public IActionResult Post([FromBody] SubjectRequestModel request)
         {
             _subjectManager.Create(request);
@@ -47,6 +50,7 @@ namespace Backend.Controllers
         }
 
         // PUT api/<SubjectController>/5
+        [Authorize(Role.Admin)]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] SubjectRequestModel request)
         {
@@ -55,6 +59,7 @@ namespace Backend.Controllers
         }
 
         // DELETE api/<SubjectController>/5
+        [Authorize(Role.Admin)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

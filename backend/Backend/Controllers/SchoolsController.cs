@@ -1,4 +1,6 @@
-﻿using Backend.BusinessLogic.Managers;
+﻿using Backend.Authorization;
+using Backend.BusinessLogic.Enums;
+using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
 using Backend.Models;
 using Backend.Models.RequestModels;
@@ -40,6 +42,7 @@ namespace Backend.Controllers
         }
 
         // POST api/<SchoolsController>
+        [Authorize(Role.Admin)]
         [HttpPost]
         public IActionResult Post([FromBody] SchoolRequestModel request)
         {
@@ -48,6 +51,7 @@ namespace Backend.Controllers
         }
 
         // PUT api/<SchoolsController>/5
+        [Authorize(Role.Admin)]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] SchoolRequestModel request)
         {
@@ -56,6 +60,7 @@ namespace Backend.Controllers
         }
 
         // DELETE api/<SchoolsController>/5
+        [Authorize(Role.Admin)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

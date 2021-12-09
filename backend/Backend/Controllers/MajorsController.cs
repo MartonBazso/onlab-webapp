@@ -1,4 +1,6 @@
-﻿using Backend.BusinessLogic.Managers;
+﻿using Backend.Authorization;
+using Backend.BusinessLogic.Enums;
+using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
 using Backend.Models;
 using Backend.Models.RequestModels;
@@ -36,6 +38,7 @@ namespace Backend.Controllers
         }
 
         // POST api/<MajorsController>
+        [Authorize(Role.Admin)]
         [HttpPost]
         public IActionResult Post([FromBody] MajorRequestModel request)
         {
@@ -44,6 +47,7 @@ namespace Backend.Controllers
         }
 
         // PUT api/<MajorsController>/5
+        [Authorize(Role.Admin)]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] MajorRequestModel request)
         {
@@ -52,6 +56,7 @@ namespace Backend.Controllers
         }
 
         // DELETE api/<MajorsController>/5
+        [Authorize(Role.Admin)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

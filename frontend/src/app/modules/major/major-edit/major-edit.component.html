@@ -1,8 +1,8 @@
-<div>
-    <h1>
-        Új Szak Létrehozása
-    </h1>
+<div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1>
+            Új Szak Létrehozása
+        </h1>
         <mat-form-field>
             <input matInput placeholder="Szak Neve" formControlName="name">
         </mat-form-field>
