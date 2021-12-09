@@ -4,6 +4,7 @@ import { SchoolViewComponent } from './school-view/school-view.component';
 import { MaterialModule } from 'src/app/material.module';
 import { SchoolEditComponent } from './school-edit/school-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class SchoolModule { }

@@ -21,7 +21,7 @@ namespace Backend.Authorization
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var _currentUser = context.HttpContext.RequestServices.GetService<ICurrentUser>();
-            if (_currentUser.Id == 0 || (UserRoles.Any() && !UserRoles.Where(r => r == _currentUser.UserRole).Any()))
+            if (_currentUser.Id == 0 || (UserRoles.Any() && !UserRoles.Where(r => r == _currentUser.Role).Any()))
             {
                 context.Result = new UnauthorizedResult();
             }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { MajorEditComponent } from './modules/major/major-edit/major-edit.component';
 import { MajorViewComponent } from './modules/major/major-view/major-view.component';
 import { SchoolEditComponent } from './modules/school/school-edit/school-edit.component';
@@ -16,8 +17,8 @@ const routes: Routes = [
   {
     path: 'subjects', children: [
       { path: '', component: SubjectListComponent },
-      { path: 'edit/:id', component: SubjectEditComponent },
-      { path: 'create', component: SubjectEditComponent },
+      { path: 'edit/:id', component: SubjectEditComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: SubjectEditComponent, canActivate: [AuthGuard] },
       { path: ':id', component: SubjectListComponent },
       { path: 'details/:id', component: SubjectGetComponent },
     ]
@@ -26,23 +27,23 @@ const routes: Routes = [
   {
     path: 'schools', children: [
       { path: '', component: SchoolViewComponent },
-      { path: 'edit/:id', component: SchoolEditComponent },
-      { path: 'create', component: SchoolEditComponent },
+      { path: 'edit/:id', component: SchoolEditComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: SchoolEditComponent, canActivate: [AuthGuard] },
     ]
   },
   {
     path: 'majors', children: [
       { path: '', component: MajorViewComponent },
-      { path: 'edit/:id', component: MajorEditComponent },
+      { path: 'edit/:id', component: MajorEditComponent, canActivate: [AuthGuard] },
       { path: 'create', component: MajorEditComponent },
-      { path: ':id', component: MajorViewComponent },
+      { path: ':id', component: MajorViewComponent, canActivate: [AuthGuard] },
     ]
   },
   {
     path: 'teachers', children: [
       { path: '', component: TeacherViewComponent },
-      { path: 'edit/:id', component: SubjectEditComponent },
-      { path: 'create', component: SubjectEditComponent },
+      { path: 'edit/:id', component: SubjectEditComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: SubjectEditComponent, canActivate: [AuthGuard] },
     ]
   },
 

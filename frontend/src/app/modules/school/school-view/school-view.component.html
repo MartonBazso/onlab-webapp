@@ -1,27 +1,8 @@
 <div>
     <h1>Iskolák</h1>
     <div class="cards">
-        <button mat-button class="add-button">
-
-        <mat-card class="card add-card" (click)="createSchool()">
-          <mat-card-content><img src="assets/transparent-plus.png" alt="plus"></mat-card-content>
-        </mat-card>
-      </button>
-        <mat-card *ngFor="let school of schools" class="card">
-            <mat-card-title>
-                <button mat-flat-button (click)="navigate(school.id)" class="name-button">
-                  {{school.name}}
-                </button>
-            </mat-card-title>
-            <mat-card-content class="card-content">
-                <div class="description" [matTooltip]="school.description" matTooltipClass="tooltip">
-                    {{school.description}} <span *ngIf="school.description.length > 50">...</span>
-                </div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="editSchool(school)" class="edit-button">Szerkesztés</button>
-                <button mat-raised-button color="warn" (click)="deleteSchool(school)" class="delete-button">Törlés</button>
-            </mat-card-actions>
-        </mat-card>
+        <app-add-button route="schools"></app-add-button>
+        <app-display-card [entity]="school" [service]="service" *ngFor="let school of schools" route="schools" childRoute="majors">
+        </app-display-card>
     </div>
 </div>

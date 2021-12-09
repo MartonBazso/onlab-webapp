@@ -18,7 +18,7 @@ export class MajorViewComponent implements OnInit {
   selectedSchool: any;
 
   constructor(public dialog: MatDialog,
-    private service: MajorService,
+    public service: MajorService,
     private schoolService: SchoolService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -43,37 +43,5 @@ export class MajorViewComponent implements OnInit {
       }
       this.majors = res;
     });
-  }
-
-  deleteMajor(subject: any) {
-    const dialogRef = this.dialog.open(DeleteDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.service.delete(subject.id).subscribe(res => {
-          this.service.list();
-        });
-      }
-    });
-  }
-
-  editMajor(subject: any) {
-    if (this.schoolId) {
-      this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute.parent });
-      return;
-    }
-    this.router.navigate(["edit", subject.id], { relativeTo: this.activatedRoute });
-  }
-
-  createMajor() {
-    if (this.schoolId) {
-      this.router.navigate(["create"], { relativeTo: this.activatedRoute.parent });
-      return;
-    }
-    this.router.navigate(["create"], { relativeTo: this.activatedRoute });
-  }
-
-  navigate(id: number) {
-    this.router.navigate(["subjects", id]);
   }
 }

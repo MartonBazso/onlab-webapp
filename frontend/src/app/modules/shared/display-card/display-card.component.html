@@ -1,0 +1,16 @@
+<mat-card class="card">
+    <mat-card-title>
+        <button mat-flat-button (click)="navigate(entity.id)" class="name-button">
+        {{entity.name}}
+      </button>
+    </mat-card-title>
+    <mat-card-content>
+        <div class="description" [matTooltip]="entity.description" matTooltipClass="tooltip">
+            {{entity.description}} <span *ngIf="entity.description.length > 50">...</span>
+        </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!isUserEmptyOrNotAdmin()">
+        <app-edit-button [id]="entity.id" [route]="route"></app-edit-button>
+        <app-delete-button [id]="entity.id" [service]="service"></app-delete-button>
+    </mat-card-actions>
+</mat-card>

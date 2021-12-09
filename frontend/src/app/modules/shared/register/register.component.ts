@@ -19,15 +19,23 @@ import { UserService } from "../services/user.service";
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  name: AbstractControl;
+
+  userName: AbstractControl;
   email: AbstractControl;
   passwords: AbstractControl;
-  userRole: AbstractControl;
+  role: AbstractControl;
+  fullName: AbstractControl;
   roles = Role;
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.name = this.fb.control("", [
+    this.fullName = this.fb.control("", [
+      Validators.required,
+      Validators.minLength(5),
+    ]);
+
+    this.userName = this.fb.control("", [
       Validators.required,
       Validators.minLength(5),
     ]);
@@ -46,22 +54,24 @@ export class RegisterComponent implements OnInit {
       { validator: passwordValidator(8) }
     );
 
-    this.userRole = this.fb.control("", [Validators.required]);
+    this.role = this.fb.control("", [Validators.required]);
 
     this.form = this.fb.group({
-      name: this.name,
+      userName: this.userName,
+      fullName: this.fullName,
       email: this.email,
       passwords: this.passwords,
-      userRole: this.userRole,
+      role: this.role,
     });
   }
 
   register() {
     const user = {
-      name: this.name.value,
+      userName: this.userName.value,
       email: this.email.value,
       password: this.passwords.get('password').value,
-      userRole: this.userRole.value
+      role: this.role.value,
+      fullName: this.fullName.value,
     };
     this.userService.addUser(user).subscribe(
       (data) => {

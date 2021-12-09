@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Backend.DataAccess.DataModels
+namespace Backend.Models.ViewModels
 {
-    public class User : DbModelBase
+    public class UserViewModel
     {
+        public int Id { get; set; }
+        public string FullName { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string FullName { get; set; }
-        public string Password { get; set; }
-        public byte[] Salt { get; set; }
         public Role Role { get; set; }
     }
 }

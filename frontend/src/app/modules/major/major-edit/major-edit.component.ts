@@ -45,7 +45,6 @@ export class MajorEditComponent implements OnInit {
 
     if (this.id) {
       this.service.get(this.id).subscribe(data => {
-        console.log(data);
         this.form.addControl('id', this.fb.control(data.id));
         this.form.patchValue(data);
       });

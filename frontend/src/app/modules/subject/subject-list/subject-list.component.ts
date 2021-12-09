@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MajorService } from '../../major/services/major.service';
-import { DeleteDialogComponent } from '../../shared/delete-dialog/delete-dialog.component';
-import { CrudService } from '../../shared/services/crud.service';
 import { SubjectService } from '../services/subject.service';
 
 @Component({
@@ -40,29 +38,5 @@ export class SubjectListComponent implements OnInit {
       }
       this.subjects = res;
     });
-  }
-
-  deleteSubject(subject: any) {
-    const dialogRef = this.dialog.open(DeleteDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.service.delete(subject.id).subscribe(res => {
-          console.log(res);
-        });
-      }
-    });
-  }
-
-  editSubject(subject: any) {
-    this.router.navigate(["subjects", "edit", subject.id]);
-  }
-
-  createSubject() {
-    this.router.navigate(["subjects", "create"]);
-  }
-
-  navigate(id: number) {
-    this.router.navigate(["subjects", "details", id]);
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../modules/shared/models/user.interface';
+import { UserService } from '../modules/shared/services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,14 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  user: User = null;
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => {
+      this.user = user;
+    });
   }
 
-  //route to subjects on click
   navigateTo(path: string) {
     this.router.navigate([path]);
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }

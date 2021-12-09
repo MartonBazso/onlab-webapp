@@ -1,0 +1,5 @@
+<button mat-button class="add-button" *ngIf="!isUserEmptyOrNotAdmin()">
+  <mat-card class="card add-card" (click)="create()">
+    <mat-card-content><img src="assets/transparent-plus.png" alt="plus"></mat-card-content>
+  </mat-card>
+</button>

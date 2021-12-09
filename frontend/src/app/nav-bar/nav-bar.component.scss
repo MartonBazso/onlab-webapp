@@ -22,3 +22,13 @@ button:hover {
     padding: 5px;
     margin: 10px;
 }
+
+.greeting {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0.7em;
+    line-height: 1.7em;
+    .name {
+        font-style: italic;
+    }
+}

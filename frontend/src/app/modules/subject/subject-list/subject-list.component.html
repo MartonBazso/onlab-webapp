@@ -4,26 +4,10 @@
         <h1>{{selectedMajor.name}}</h1>
         <h2>{{selectedMajor.description}}</h2>
     </div>
-    <div class="cards">
-        <button mat-button class="add-button">
 
-          <mat-card class="card add-card" (click)="createSubject()">
-            <mat-card-content><img src="assets/transparent-plus.png" alt="plus"></mat-card-content>
-          </mat-card>
-        </button>
-        <mat-card *ngFor="let subject of subjects" class="card">
-            <mat-card-title>
-                <button mat-flat-button (click)="navigate(subject.id)" class="name-button">
-                  {{subject.name}}
-                </button>
-            </mat-card-title>
-            <mat-card-content>
-                <p>{{subject.description}}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="editSubject(subject)" class="edit-button">Edit</button>
-                <button mat-raised-button color="warn" (click)="deleteSubject(subject)" class="delete-button">Delete</button>
-            </mat-card-actions>
-        </mat-card>
+    <div class="cards">
+        <app-add-button route="subjects"></app-add-button>
+        <app-display-card [entity]="subject" [service]="service" *ngFor="let subject of subjects" route="subjects" childRoute="subjects/details">
+        </app-display-card>
     </div>
 </div>

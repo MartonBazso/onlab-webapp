@@ -5,27 +5,8 @@
         <h2>{{selectedSchool.description}}</h2>
     </div>
     <div class="cards">
-        <button mat-button class="add-button">
-
-      <mat-card class="card add-card" (click)="createMajor()">
-        <mat-card-content><img src="assets/transparent-plus.png" alt="plus"></mat-card-content>
-      </mat-card>
-    </button>
-        <mat-card *ngFor="let major of majors" class="card">
-            <mat-card-title>
-                <button mat-flat-button (click)="navigate(major.id)" class="name-button">
-                  {{major.name}}
-                </button>
-            </mat-card-title>
-            <mat-card-content>
-                <div class="description" [matTooltip]="major.description" matTooltipClass="tooltip">
-                    {{major.description}} <span *ngIf="major.description.length > 50">...</span>
-                </div>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="editMajor(major)" class="edit-button">Szerkesztés</button>
-                <button mat-raised-button color="warn" (click)="deleteMajor(major)" class="delete-button">Törlés</button>
-            </mat-card-actions>
-        </mat-card>
+        <app-add-button route="majors"></app-add-button>
+        <app-display-card [entity]="major" [service]="service" *ngFor="let major of majors" route="majors" childRoute="subjects">
+        </app-display-card>
     </div>
 </div>

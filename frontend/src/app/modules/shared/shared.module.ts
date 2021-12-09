@@ -5,6 +5,10 @@ import { MaterialModule } from 'src/app/material.module';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddButtonComponent } from './add-button/add-button.component';
+import { EditButtonComponent } from './edit-button/edit-button.component';
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
+import { DisplayCardComponent } from './display-card/display-card.component';
 
 
 
@@ -14,6 +18,16 @@ import { RegisterComponent } from './register/register.component';
     DeleteDialogComponent,
     RegisterComponent,
     LoginComponent,
+    AddButtonComponent,
+    EditButtonComponent,
+    DeleteButtonComponent,
+    DisplayCardComponent,
+  ],
+  exports:[
+    DeleteButtonComponent,
+    EditButtonComponent,
+    AddButtonComponent,
+    DisplayCardComponent,
   ],
   imports: [
     CommonModule,

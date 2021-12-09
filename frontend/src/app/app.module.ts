@@ -15,6 +15,8 @@ import { MajorModule } from './modules/major/major.module';
 import { TeacherModule } from './modules/teacher/teacher.module';
 import { initializeEnum } from './services/initializer.service';
 import { EnumService } from './modules/shared/services/enum.service';
+import { UserService } from './modules/shared/services/user.service';
+import { initializeUser } from './services/initialize-user.function';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -41,6 +43,12 @@ import { EnumService } from './modules/shared/services/enum.service';
       provide: APP_INITIALIZER,
       useFactory: initializeEnum,
       deps: [EnumService],
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeUser,
+      deps: [UserService],
       multi: true,
     },
   ],

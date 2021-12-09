@@ -1,14 +1,17 @@
 export interface CreateUser {
-  name: string;
+  userName: string;
+  fullName: string;
   email: string;
+  role: string;
   password: string;
 }
 
 export interface User {
   id: number;
-  name: string;
+  userName: string;
+  fullName: string;
   email: string;
-  userRole: Role;
+  role: Role;
 }
 
 export enum Role{
