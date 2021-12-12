@@ -15,11 +15,10 @@ namespace Backend.Config
         {
             services.AddScoped<ISubjectManager, SubjectManager>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
-            services.AddScoped<IUserManager, UserManager>();
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped(typeof(IManagerBase<>), typeof(ManagerBase<>));
-            services.AddSingleton<ICurrentUser, CurrentUser.CurrentUser>();
-            //services.AddScoped<ICurrentUser, CurrentUser.CurrentUser>();
+            services.AddScoped<IMaterialManager, MaterialManager>();
+            services.AddScoped<IPostManager, PostManager>();
         }
     }
 }

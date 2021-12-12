@@ -1,10 +1,10 @@
-﻿using Backend.Authorization;
-using Backend.BusinessLogic.Enums;
+﻿using Backend.BusinessLogic.Enums;
 using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
 using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,7 +38,7 @@ namespace Backend.Controllers
         }
 
         // POST api/<MajorsController>
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] MajorRequestModel request)
         {
@@ -47,7 +47,7 @@ namespace Backend.Controllers
         }
 
         // PUT api/<MajorsController>/5
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] MajorRequestModel request)
         {
@@ -56,7 +56,7 @@ namespace Backend.Controllers
         }
 
         // DELETE api/<MajorsController>/5
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

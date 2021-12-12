@@ -20,6 +20,11 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "file-saver": "^2.0.5",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "ng2-file-upload": "^1.4.0",
+    "node-jsonwebtoken": "0.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

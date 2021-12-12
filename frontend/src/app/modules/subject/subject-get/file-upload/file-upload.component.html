@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="file-upload">
+        <button mat-raised-button (click)="openFileDialog()">File hozzáadása</button>
+    </div>
+    <div class="file-list">
+
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="fileName">
+                <mat-header-cell *matHeaderCellDef>Fájl neve</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="uploadedBy">
+                <mat-header-cell *matHeaderCellDef>Feltöltő</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.uploadedByUserName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="uploadedAt">
+                <mat-header-cell *matHeaderCellDef>Feltöltés dátuma</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.uploadedAt | date: 'MMM d, y, h:mm:ss a'}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="download">
+                <mat-header-cell *matHeaderCellDef>Letöltés</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="downloadFile(element.id)"><mat-icon>download</mat-icon></button>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</div>

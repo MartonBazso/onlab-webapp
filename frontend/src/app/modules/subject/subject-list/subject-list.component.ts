@@ -3,13 +3,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MajorService } from '../../major/services/major.service';
 import { IdNameModel } from '../../shared/models/id-name.interface';
+import { SearchService } from '../../shared/search/search.service';
 import { EnumService } from '../../shared/services/enum.service';
 import { SubjectService } from '../services/subject.service';
 
 @Component({
   selector: 'app-subject-list',
   templateUrl: './subject-list.component.html',
-  styleUrls: ['./subject-list.component.scss']
+  styleUrls: ['./subject-list.component.scss'],
+  providers: [SearchService]
 })
 export class SubjectListComponent implements OnInit {
   subjects = [];
@@ -19,7 +21,7 @@ export class SubjectListComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private service: SubjectService,
     private majorService: MajorService,
-    private router: Router,
+    private searchService: SearchService,
     private activatedRoute: ActivatedRoute,
     private enumService: EnumService,
   ) { }
@@ -42,9 +44,13 @@ export class SubjectListComponent implements OnInit {
     this.service.list();
     this.service.entities.subscribe(res => {
       if (this.majorId) {
-        this.subjects = res.filter(x => x.majorId == this.majorId);
+        this.searchService.setEntities(res.filter(x => x.majorId == this.majorId));
         return;
       }
+      this.searchService.setEntities(res);
+    });
+
+    this.searchService.entities.subscribe(res => {
       this.subjects = res;
     });
   }

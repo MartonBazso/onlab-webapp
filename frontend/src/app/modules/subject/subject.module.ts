@@ -6,6 +6,7 @@ import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubjectGetComponent } from './subject-get/subject-get.component';
 import { SharedModule } from '../shared/shared.module';
+import { SubjectGetModule } from './subject-get/subject-get.module';
 
 
 
@@ -14,13 +15,13 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     SubjectListComponent,
     SubjectEditComponent,
-    SubjectGetComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     MaterialModule,
     ReactiveFormsModule,
+    SubjectGetModule,
   ]
 })
 export class SubjectModule { }

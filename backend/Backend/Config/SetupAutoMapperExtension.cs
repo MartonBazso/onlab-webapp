@@ -19,6 +19,8 @@ namespace Backend.Config
                 cfg.AddProfile<SchoolProfile>();
                 cfg.AddProfile<MajorProfile>();
                 cfg.AddProfile<UserProfile>();
+                cfg.AddProfile<MaterialProfile>();
+                cfg.AddProfile<PostProfile>();
             });
 
             //Setup AutoMapper

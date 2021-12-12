@@ -1,15 +1,10 @@
-﻿using Backend.Authorization;
-using Backend.BusinessLogic.Enums;
-using Backend.BusinessLogic.Managers;
+﻿using Backend.BusinessLogic.Managers;
 using Backend.DataAccess.DataModels;
 using Backend.Models;
 using Backend.Models.RequestModels;
 using Backend.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,7 +37,7 @@ namespace Backend.Controllers
         }
 
         // POST api/<SchoolsController>
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] SchoolRequestModel request)
         {
@@ -51,7 +46,7 @@ namespace Backend.Controllers
         }
 
         // PUT api/<SchoolsController>/5
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] SchoolRequestModel request)
         {
@@ -60,7 +55,7 @@ namespace Backend.Controllers
         }
 
         // DELETE api/<SchoolsController>/5
-        [Authorize(Role.Admin)]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

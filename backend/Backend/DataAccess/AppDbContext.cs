@@ -1,22 +1,22 @@
 ﻿using Backend.DataAccess.DataModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Backend.DataAccess
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Major> Majors { get; set; }
         public DbSet<School> Schools { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Material> Materials { get; set; }

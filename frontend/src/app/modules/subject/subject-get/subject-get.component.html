@@ -1,21 +1,19 @@
-<div class="subject-data" *ngIf="subject">
-    <h2>{{subject.name}} </h2>
-    <h2>Leírás:</h2>
-    <p>{{subject.description}}</p>
-</div>
-<div>
-    <ul>
-        <li>
-            Comment
-        </li>
-        <li>
-            FileUpload
-        </li>
-        <li>
-            FileDownload
-        </li>
-        <li>
-            Teacher review
-        </li>
-    </ul>
+<div class="container">
+    <div class="header-container">
+
+
+        <div class="background-with-shadow" *ngIf="subject">
+            <h2>{{subject.name}} </h2>
+            <h2>Leírás:</h2>
+            <p>{{subject.description}}</p>
+        </div>
+        <div *ngIf="subject" class="background-with-shadow">
+            <app-file-upload [subjectId]="subject.id"></app-file-upload>
+        </div>
+    </div>
+    <div class="content-container">
+        <div *ngIf="subject" class="post-container">
+            <app-post-view [subjectId]="subject.id"></app-post-view>
+        </div>
+    </div>
 </div>

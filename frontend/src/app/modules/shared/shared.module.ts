@@ -10,6 +10,7 @@ import { EditButtonComponent } from './edit-button/edit-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { DisplayCardComponent } from './display-card/display-card.component';
 import { EmptyListIndicatorComponent } from './empty-list-indicator/empty-list-indicator.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -24,6 +25,7 @@ import { EmptyListIndicatorComponent } from './empty-list-indicator/empty-list-i
     DeleteButtonComponent,
     DisplayCardComponent,
     EmptyListIndicatorComponent,
+    SearchComponent,
   ],
   exports:[
     DeleteButtonComponent,
@@ -31,6 +33,7 @@ import { EmptyListIndicatorComponent } from './empty-list-indicator/empty-list-i
     AddButtonComponent,
     DisplayCardComponent,
     EmptyListIndicatorComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,

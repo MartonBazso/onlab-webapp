@@ -1,8 +1,11 @@
 <div>
     <h1>Iskolák</h1>
+    <app-search></app-search>
     <div class="cards">
         <app-add-button route="schools"></app-add-button>
         <app-display-card [entity]="school" [service]="service" *ngFor="let school of schools" route="schools" childRoute="majors">
         </app-display-card>
     </div>
+
+    <app-empty-list-indicator [list]="schools"></app-empty-list-indicator>
 </div>

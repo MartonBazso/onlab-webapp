@@ -1,6 +1,5 @@
 <div>
     <h1>Tárgyak</h1>
-
     <div class="major-data" *ngIf="selectedMajor">
         <h2>{{selectedMajor.name}} ({{categoryName}})</h2>
         <h3>Félévek száma: {{selectedMajor.numberOfSemesters}}</h3>
@@ -9,7 +8,7 @@
         <p><em>Hallgatók száma:</em> {{selectedMajor.averageNumberOfStudents}} fő</p>
         <p><em>Elhelyezkedés eléye:</em> {{selectedMajor.workChances}}%</p>
     </div>
-
+    <app-search></app-search>
     <div class="cards">
         <app-add-button route="subjects"></app-add-button>
         <app-display-card [entity]="subject" [service]="service" *ngFor="let subject of subjects" route="subjects" childRoute="subjects/details">

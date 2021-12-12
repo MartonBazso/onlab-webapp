@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import * as moment from 'moment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CreateUser, User } from '../models/user.interface';
 
@@ -22,9 +23,10 @@ export class UserService {
   }
 
   login(loginData: any) {
-    this.httpClient.post<User>(this.baseUrl + '/user/login', loginData).subscribe(data => {
-      this.currentUserSubject.next(data);
-    });
+    this.httpClient.post<User>(this.baseUrl + '/user/login', loginData)
+      .subscribe(data => {
+        this.setSession(data);
+      })
   }
 
   getCurrentUser() {
@@ -34,7 +36,34 @@ export class UserService {
   }
 
   logout() {
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
+    return this.httpClient.put(this.baseUrl + '/user/logout', null);
+  }
+
+  clearCurrentUser() {
     this.currentUserSubject.next(null);
-    return this.httpClient.put(this.baseUrl + '/user/login', null);
+  }
+
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiration, 'second');
+    localStorage.setItem('id_token', authResult.token);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    this.getCurrentUser();
+  }
+
+
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem("expires_at");
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
   }
 }

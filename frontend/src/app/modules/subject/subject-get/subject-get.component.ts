@@ -9,7 +9,6 @@ import { SubjectService } from '../services/subject.service';
 })
 export class SubjectGetComponent implements OnInit {
   subject: any;
-
   constructor(private service: SubjectService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {

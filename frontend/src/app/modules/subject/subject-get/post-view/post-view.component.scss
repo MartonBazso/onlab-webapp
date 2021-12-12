@@ -1,0 +1,33 @@
+.post-text {
+    width: 100%;
+    background-color: white;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    button {
+        margin-left: 10px;
+    }
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    app-post {
+        margin: 15px 0;
+    }
+}

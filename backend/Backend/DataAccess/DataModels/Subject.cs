@@ -16,6 +16,7 @@ namespace Backend.DataAccess.DataModels
         public int MajorId { get; set; }
 
         public virtual ICollection<Material> CourseMaterials { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
     }
 }
