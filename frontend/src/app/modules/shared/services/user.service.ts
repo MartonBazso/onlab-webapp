@@ -38,7 +38,7 @@ export class UserService {
   logout() {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
-    return this.httpClient.put(this.baseUrl + '/user/logout', null);
+    this.clearCurrentUser();
   }
 
   clearCurrentUser() {
