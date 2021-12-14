@@ -1,8 +1,0 @@
-Témaválasztás
-
-A dolgozatom témája ASP.NET Core alapú webalkalmazás fejlesztése. Azért ezt a témát választottam, mivel úgy gondolom, hogy a webes alkalmazásoké a jövő, hiszen minél többfajta eszköz kerül a piacra, annál többféle platfromra kellene dedikált alkalmazásokat fejleszetni, megannyi fajta környezetben. Erre az univerzális megoldást a Webapplikációk nyújthatják, amelyekhez csak egy böngészőre van szükség, így egyszerűen böngészhető a weblap, akár VR szemüvegeken keresztül is. Ehhez fontos az, hogy reszponzív és könnyen használható legyen a webalkalmazás. Ne legyen sok felesleges felugró ablak és zavaró reklám sem.
-
-Az alkalmazás konkrét témája pedig egy tantárgy menedzselő alkalmazás. Az applikáció mögötti motiváció a saját tapasztalatomból adódik. Nem a BME-n végeztem az alapképzést, így kevés tapasztalattal jöttem ide mesterszakra. Már a felvételihez is kevés anyag állt rendelkezésre, de úgy gondoltam, hogy nem lehet elvárás, hogy minden külsős felé biztosítsanak belsős tananyagokat ingyen. Felvétel után viszont azt tapasztaltam, hogy továbbra sem bőbeszédű a tájékoztatás az újonnan felvett hallgatók felé.A felvett tárgyak anyagait is nehezen találtam meg.Minden tárgynak az anyaga más-más platfromon volt elérhető.
-
-Erre a problémára nyújthat megoldást egy olyan weblap, amiben egy-egy iskolának a tárgyait lehet kezelni. Az alkalmazás fókuszában a tantárgyak vannak. Ezekhez lehet fájlokat csatolni, kommenteket írni és a későbbiekben a tanár oktatóiról is lehetnek információk.
-
